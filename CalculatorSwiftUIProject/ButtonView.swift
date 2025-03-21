@@ -19,7 +19,7 @@ struct ButtonView: View {
         let val = calcButton.rawValue
         return val.contains("IMG") ? nil : val
     }
-    private let buttonDimension: CGFloat = UIScreen.main.bounds.width / 5
+    private let buttonDimension: CGFloat = UIScreen.main.bounds.width/5
     
     var body: some View {
         ZStack {

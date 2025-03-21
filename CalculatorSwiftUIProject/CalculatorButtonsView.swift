@@ -10,15 +10,90 @@ import SwiftUI
 struct CalculatorButtonsView: View {
     @Binding var mainResult: String
     @Binding var currentComputation: String
+    let buttonData: [RowofCalcButtonsModel] = [
+        RowofCalcButtonsModel(row: [
+            CalcButtonModel(
+                calcButton: .clear,
+                color: topButtonsColor),
+            CalcButtonModel(
+                calcButton: .negative,
+                color: topButtonsColor),
+            CalcButtonModel(
+                calcButton: .percent,
+                color: topButtonsColor),
+            CalcButtonModel(
+                calcButton: .divide,
+                color: rightButtonsColor)]),
+        RowofCalcButtonsModel(row: [
+            CalcButtonModel(
+                calcButton: .seven,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .eight,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .nine,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .multiply,
+                color: rightButtonsColor)]),
+        RowofCalcButtonsModel(row: [
+            CalcButtonModel(
+                calcButton: .four,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .five,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .six,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .subtract,
+                color: rightButtonsColor)]),
+        RowofCalcButtonsModel(row: [
+            CalcButtonModel(
+                calcButton: .one,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .two,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .three,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .add,
+                color: rightButtonsColor)]),
+        RowofCalcButtonsModel(row: [
+            CalcButtonModel(
+                calcButton: .undo,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .zero,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .decimal,
+                color: digitsColor),
+            CalcButtonModel(
+                calcButton: .equal,
+                color: digitsColor)])]
     var body: some View {
-        HStack {
-            Spacer()
-            Text(currentComputation)
-                .foregroundColor(digitsColor)
-                .lineLimit(1)
-        }.padding(.horizontal)
-            .minimumScaleFactor(0.1) // font will 
-        Text(mainResult)
+        Grid {
+            ForEach(buttonData) {rowofCalcButtonsModel in
+                GridRow {
+                    ForEach(rowofCalcButtonsModel.row) { calcButton in
+                        Button {
+                            print("Button is pressed")
+                        } label: {
+                            ButtonView(calcButton: calcButton.calcButton, fgcolor: calcButton.color, bgcolor: buttonBackgroundColor)
+                        }
+                        
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(secondaryBackgroundColor)
+        .cornerRadius(20)
     }
 }
 

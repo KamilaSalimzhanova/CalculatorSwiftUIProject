@@ -23,8 +23,12 @@ struct ButtonView: View {
     
     var body: some View {
         ZStack {
-            Text(text ?? "")
-            Image(systemName: systemImage ?? "")
+            if let text = text {
+                Text(text)
+            }
+            if let systemImage = systemImage {
+                Image(systemName: systemImage)
+            }
         }
         .font(.title2)
         .fontWeight(.semibold)

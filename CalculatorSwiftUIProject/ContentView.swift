@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var lightMode: Bool = true
+    @State private var lightMode: Bool = false
     @State private var currentComputation: String = ""
     @State private var mainResult: String = "0"
     

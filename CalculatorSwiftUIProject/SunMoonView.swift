@@ -10,7 +10,14 @@ import SwiftUI
 struct SunMoonView: View {
     var lightMode: Bool
     var body: some View {
-        Text("sun moon view")
+        HStack(spacing: 30) {
+            Image(systemName: "sun.min")
+                .imageScale(.large)
+                .foregroundColor(lightMode ? sunOrMoonSelected : sunOrMoonNotSelected)
+            Image(systemName: "moon")
+                .imageScale(.large)
+                .foregroundColor(lightMode ? sunOrMoonNotSelected : sunOrMoonSelected)
+        }.padding().background(secondaryBackgroundColor).cornerRadius(20)
     }
 }
 

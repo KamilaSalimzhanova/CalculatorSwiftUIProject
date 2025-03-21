@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var lightMode: Bool = false
-    @State private var currentComputation: String = ""
-    @State private var mainResult: String = "0"
+    @State private var currentComputation: String = "1+1+1"
+    @State private var mainResult: String = "2"
     
     
     var body: some View {
@@ -24,8 +24,11 @@ struct ContentView: View {
                         }
                     }
                 Spacer()
+                
                 ComputationView(mainResult: mainResult, currentComputation: currentComputation)
+                
                 Spacer()
+                
                 CalculatorButtonsView(mainResult: $mainResult, currentComputation: $currentComputation)
             }
             .padding()
